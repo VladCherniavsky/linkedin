@@ -1,0 +1,16 @@
+{
+  "name": "linkedin",
+  "version": "1.0.0",
+  "main": "app",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node app.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.7.21",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-preset-es2017-node7": "^0.4.1",
+    "express": "^4.14.0"
+  }
+}
