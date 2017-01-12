@@ -4,6 +4,7 @@
   "main": "app",
   "license": "MIT",
   "scripts": {
+    "prestart": "babel-node tools/initTables.js",
     "start": "babel-node app.js"
   },
   "dependencies": {
@@ -11,6 +12,8 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-preset-es2017-node7": "^0.4.1",
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nconf": "^0.8.4"
   }
 }

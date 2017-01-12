@@ -234,6 +234,8 @@ function incrementVisitCount() {
 function saveOrPrint(details) {
   var API = savedDetails.API;
 
+  console.log('API', API);
+
   if (API) {
     try {
       $.ajax({

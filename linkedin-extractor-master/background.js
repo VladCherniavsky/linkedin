@@ -16,9 +16,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				updateScript(request.toSaveDetails);
 			}
 		}
-
-
-		sendResponse({hi: 'hi'});
 	} else if (request.message === "options") {
 		chrome.runtime.openOptionsPage(function() {});
 	}

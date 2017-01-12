@@ -82,7 +82,7 @@ function startVisiting(i) {
 		$(personRow).css('background-color', color_next_to_visit);
 		$(personTitle).text(nowText);
 
-		var delay = Math.round(Math.random() * (25000 - 10000)) + 10000;
+		var delay = Math.round(Math.random() * (25000 - 10000)) + 1000;
 		var delayS = Math.round(delay / 1000);
 
 		$('#extractor-next-visit').text(delayS + 's');
@@ -258,6 +258,8 @@ function incrementVisitCount() {
 
 function saveOrPrint(details) {
 	var API = savedDetails.API;
+	console.log('API', API);
+	console.log('details', details);
 
 	if (API) {
 		try {
@@ -265,9 +267,10 @@ function saveOrPrint(details) {
 				url: API,
 				type: 'POST',
 				data: {
-					data: details
+					contact: JSON.stringify(details)
 				}
 			}).complete(function(returned) {
+				console.log('returned', returned)
 
 			});
 		} catch (e) {}
