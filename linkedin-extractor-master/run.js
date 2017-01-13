@@ -48,6 +48,8 @@ function startVisiting(i) {
 		return;
 	}
 
+	alert(window.location.href );
+
 	var peopleRows = $('#results .people');
 	var personRow = peopleRows[i];
 	console.log('personRow', personRow);

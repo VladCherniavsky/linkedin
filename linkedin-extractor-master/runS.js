@@ -48,7 +48,8 @@ function startVisiting(i) {
     return;
   }
 
-  var peopleRows = $('.spotlights-result').parent();
+  var peopleRows = $('.spotlights-and-results-container').find('#results-list>li');
+  console.log('peopleRows', peopleRows);
   var personRow = peopleRows[i];
 
   var personTitle = $(personRow).find('.name > a');
@@ -81,7 +82,7 @@ function startVisiting(i) {
       'background-color', color_next_to_visit);
     $(personTitle).text(nowText);
 
-    var delay = Math.round(Math.random() * (25000 - 10000)) + 10000;
+    var delay = Math.round(Math.random() * (10000 - 7000)) + 1000;
     var delayS = Math.round(delay / 1000);
 
     $('#extractor-next-visit').text(delayS + 's');
@@ -108,6 +109,7 @@ function startVisiting(i) {
         }
 
         visitPerson(personLink, function(profileDetails) {
+          console.log('profileDetails', profileDetails);
           saveOrPrint(profileDetails);
 
           incrementVisitCount();
@@ -233,8 +235,10 @@ function incrementVisitCount() {
 
 function saveOrPrint(details) {
   var API = savedDetails.API;
+  var account = savedDetails.ACCOUNT;
 
   console.log('API', API);
+  console.log('account', account);
 
   if (API) {
     try {
@@ -242,7 +246,8 @@ function saveOrPrint(details) {
         url: API,
         type: 'POST',
         data: {
-          data: details
+            contact: JSON.stringify(details),
+            userEmail: account
         }
       }).complete(function(returned) {
 

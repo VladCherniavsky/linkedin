@@ -86,6 +86,25 @@ $('#extractor-skip-clear').on('click', function() {
 	}, 2000);
 });
 
+$('#extractor-save-account').on('click', function() {
+    var text = $(this).text();
+    var self = this;
+
+    var ACCOUNT = $('#extractor-save-under-account').val() || '';
+    alert(ACCOUNT);
+    savedDetails.ACCOUNT = ACCOUNT;
+    chrome.runtime.sendMessage({
+        'message': 'save',
+        'toSaveDetails': savedDetails,
+        'shouldUpdate': true
+    }, function() {});
+    $(this).text("Saved!").attr('disabled', true);
+
+    setTimeout(function() {
+        $(self).text(text).attr('disabled', false);
+    }, 2000);
+});
+
 
 function calculateCurrentlySkip(idsVisited, daysSkip) {
 	var now = new Date().getTime();

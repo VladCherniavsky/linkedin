@@ -11,7 +11,7 @@ function saveContact(req, res, next) {
     const params = {
         TableName: config.get('tables:users'),
         Item: {
-            userEmail: 'vvvvvvvv',
+            userEmail: req.body.userEmail,
             contactId: 12345645,
             contact: parsedContact
         },
