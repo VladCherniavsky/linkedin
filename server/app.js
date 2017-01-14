@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import https from 'https';
 import config from './config'
+import {connect} from './libs/mysql'
 
 
 import routers from './routers';
@@ -24,5 +25,15 @@ const options = {
     key: fs.readFileSync('key.pem'),
     cert: fs.readFileSync('cert.pem')
 };
-https.createServer(options, app)
-    .listen(config.get('port'), () => {console.log(`Server listening on port ${config.get('port')}`);});
+
+connect()
+    .then(onConnect)
+    .catch(console.error);
+
+
+function onConnect(data) {
+    console.log('Db Connected');
+    https.createServer(options, app)
+        .listen(config.get('port'), () => {console.log(`Server listening on port ${config.get('port')}`);});
+    app.listen(3000, (data) => {console.log(`Server listening on port ${data}`);});
+}

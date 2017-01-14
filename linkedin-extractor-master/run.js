@@ -48,8 +48,6 @@ function startVisiting(i) {
 		return;
 	}
 
-	alert(window.location.href );
-
 	var peopleRows = $('#results .people');
 	var personRow = peopleRows[i];
 	console.log('personRow', personRow);
@@ -260,8 +258,7 @@ function incrementVisitCount() {
 
 function saveOrPrint(details) {
 	var API = savedDetails.API;
-	console.log('API', API);
-	console.log('details', details);
+    var account = savedDetails.ACCOUNT;
 
 	if (API) {
 		try {
@@ -269,7 +266,8 @@ function saveOrPrint(details) {
 				url: API,
 				type: 'POST',
 				data: {
-					contact: JSON.stringify(details)
+					contact: JSON.stringify(details),
+                    userEmail: account
 				}
 			}).complete(function(returned) {
 				console.log('returned', returned)

@@ -1,6 +1,14 @@
 {
   "port": 55555,
   "tables": {
-    "users": "Users"
+    "users": "Users",
+    "contacts": "Contacts"
+  },
+  "db": {
+    "host": "linkedin-cluster.cluster-cwegojlxoygd.us-west-2.rds.amazonaws.com",
+    "user": "admin",
+    "password": "qweqweqwe",
+    "database": "linkedindb"
+
   }
 }
